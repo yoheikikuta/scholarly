@@ -227,12 +227,12 @@ class Author(object):
             affiliation = __data.find('div', class_='gsc_oai_aff')
             if affiliation:
                 self.affiliation = affiliation.text
-            email = __data.find('div', class_='gsc_oai_eml')
+            email = __data.find('div', class_='gs_ai_eml')
             if email:
                 self.email = re.sub(_EMAILAUTHORRE, r'@', email.text)
             self.interests = [i.text.strip() for i in
-                              __data.find_all('a', class_='gsc_oai_one_int')]
-            citedby = __data.find('div', class_='gsc_oai_cby')
+                              __data.find_all('a', class_='gs_ai_one_int')]
+            citedby = __data.find('div', class_='gs_ai_cby')
             if citedby and citedby.text != '':
                 self.citedby = int(citedby.text[9:])
         self._filled = False
